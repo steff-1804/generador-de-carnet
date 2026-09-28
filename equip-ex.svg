@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 120">
+<rect width="160" height="120" rx="14" fill="#ffffff"/>
+<g transform="translate(14,8)">
+<rect x="78" y="2" width="8" height="76" rx="2" fill="#2f3e4f"/>
+<rect x="87" y="2" width="4" height="92" rx="2" fill="#2f3e4f"/>
+<rect x="91" y="81" width="22" height="5" rx="2" fill="#7e8ea0"/>
+<rect x="91" y="89" width="22" height="5" rx="2" fill="#7e8ea0"/>
+<path d="M22 80 V56 Q22 36 38 36 H52 Q65 36 76 51 L78 53 V80 Z" fill="#f4c430" stroke="#253443" stroke-width="3"/>
+<path d="M44 36 V80" stroke="#253443" stroke-width="3"/>
+<path d="M44 36 H60 L71 50 V80 H44 Z" fill="#ffe48a" stroke="#253443" stroke-width="3"/>
+<path d="M49 41 H58 L67 53 V72 H49 Z" fill="#dff2ff" stroke="#253443" stroke-width="2"/>
+<circle cx="38" cy="92" r="12" fill="#253443"/><circle cx="38" cy="92" r="5" fill="#c7d2dc"/>
+<circle cx="71" cy="92" r="11" fill="#253443"/><circle cx="71" cy="92" r="4" fill="#c7d2dc"/>
+<circle cx="119" cy="90" r="14" fill="#253443"/><circle cx="119" cy="90" r="5" fill="#c7d2dc"/>
+<text x="116" y="44" text-anchor="middle" font-family="Arial" font-size="28" font-weight="700" fill="#d93b30">EX</text>
+</g></svg>

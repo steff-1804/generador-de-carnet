@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Generador de Carnets</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar">
+      <div class="sidebar-logo">
+        <img src="logo-condor-sherwin.png" alt="Logo Sherwin-Williams y Cóndor">
+      </div>
+
+      <nav class="menu">
+        <button class="menu-btn active" data-page="generator"><span>▣</span>Generador de carnets</button>
+        <button class="menu-btn" data-page="history"><span>◷</span>Historial de carnets</button>
+        <button class="menu-btn" data-page="reports"><span>▥</span>Reportes</button>
+      </nav>
+
+      <div class="sidebar-footer">SEGURIDAD HOY<br>UN MEJOR MAÑANA</div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div class="topbar-title" id="topbarTitle">Generador de carnets</div>
+        <div class="search-box">
+          <span>⌕</span>
+          <input id="globalSearch" type="search" placeholder="Buscar por nombre, cédula, empresa, cargo..." autocomplete="off">
+        </div>
+      </header>
+
+      <div class="content">
+        <section id="page-generator" class="page active">
+          <div class="page-heading">
+            <div>
+              <h1>Generador de Carnets</h1>
+              <p>Genera carnets internos con fotografía y vista previa de frente y reverso.</p>
+            </div>
+          </div>
+
+          <div class="generator-layout">
+            <section class="panel form-panel">
+              <div class="panel-title"><span class="panel-icon">●</span>Datos del colaborador / contratista</div>
+
+              <div class="form-grid">
+                <div class="field"><label>Nombres <b>*</b></label><input id="nombres" value="Juan Pérez"></div>
+                <div class="field"><label>Apellidos <b>*</b></label><input id="apellidos" value="López"></div>
+                <div class="field"><label>Cédula <b>*</b></label><input id="cedula" value="1719988776"></div>
+                <div class="field"><label>No. empleado / código</label><input id="codigo" value="123-456"></div>
+                <div class="field"><label>Empresa <b>*</b></label><input id="empresa" value="Sherwin-Williams"></div>
+                <div class="field"><label>Área <b>*</b></label>
+                  <select id="area">
+                    <option>CND</option>
+                    <option>Bodega / Logística</option>
+                    <option>Water Base</option>
+                    <option>Solvente</option>
+                    <option>Resinas</option>
+                    <option>BMP</option>
+                    <option>Calidad</option>
+                    <option>Mantenimiento</option>
+                    <option>Laboratorio</option>
+                    <option>Contratistas</option>
+                    <option>Otro</option>
+                  </select>
+                </div>
+                <div class="field"><label>Tipo de carnet</label>
+                  <select id="tipo">
+                    <option>Contratista</option>
+                    <option selected>Montacarguista</option>
+                    <option>Brigadista</option>
+                    <option>Brigadista - Primeros Auxilios</option>
+                    <option>Brigadista - Evacuación</option>
+                    <option>Brigadista - Contra Incendios</option>
+                    <option>Trabajo en Alturas</option>
+                    <option>Espacios Confinados</option>
+                    <option>Trabajo Eléctrico</option>
+                    <option>Trabajo en Caliente</option>
+                    <option>Conductor Autorizado</option>
+                    <option>Operador de Plataforma Elevadora</option>
+                    <option>Operador de Maquinaria</option>
+                    <option>Proveedor</option>
+                    <option>Visitante</option>
+                  </select>
+                </div>
+                <div class="field"><label>Cargo / actividad <b>*</b></label><input id="cargo" value="Montacarguista"></div>
+                <div class="field"><label>Tipo de sangre</label>
+                  <select id="sangre">
+                    <option>O+</option><option>O-</option><option>A+</option><option>A-</option><option>B+</option><option>B-</option><option>AB+</option><option>AB-</option>
+                  </select>
+                </div>
+                <div class="field"><label>Fecha de emisión <b>*</b></label><input id="emision" type="date"></div>
+                <div class="field"><label>Fecha de vencimiento <b>*</b></label><input id="vencimiento" type="date"></div>
+                <div class="field"><label>Teléfono de emergencia</label><input id="emergencyPhone" value="+593 99 123 4567"></div>
+                <div class="field"><label>Correo EHS</label><input id="ehsEmail" value="ehs@condor.com.ec"></div>
+              </div>
+
+              <div class="special-box" id="montacargasBox">
+                <div class="sub-title">Tipos de equipo autorizados para montacarguista</div>
+                <p class="helper-text">Marca uno o varios equipos. En la parte posterior del carnet se mostrará un visto únicamente en los equipos seleccionados.</p>
+                <div class="equipment-selector">
+                  <label class="equipment-chip"><input type="checkbox" class="equipo-check" value="combustion"> Montacargas combustión</label>
+                  <label class="equipment-chip"><input type="checkbox" class="equipo-check" value="electrico"> Montacargas eléctrico</label>
+                  <label class="equipment-chip"><input type="checkbox" class="equipo-check" value="ex"> Montacargas EX</label>
+                  <label class="equipment-chip"><input type="checkbox" class="equipo-check" value="orderpicker"> Order picker</label>
+                  <label class="equipment-chip"><input type="checkbox" class="equipo-check" value="apilador"> Apilador</label>
+                  <label class="equipment-chip"><input type="checkbox" class="equipo-check" value="handpallet"> Hand pallet eléctrico</label>
+                </div>
+              </div>
+
+              <div class="photo-box">
+                <div class="sub-title">📷 Fotografía</div>
+                <div class="photo-layout">
+                  <div class="form-photo">
+                    <img id="formPhoto" alt="Fotografía">
+                    <span id="formPhotoPlaceholder">Foto del<br>titular</span>
+                  </div>
+                  <div class="photo-actions">
+                    <button class="btn primary" id="cameraOpen" type="button">📷 Tomar foto</button>
+                    <label class="btn secondary" for="photoUpload">↑ Subir imagen</label>
+                    <input id="photoUpload" type="file" accept="image/*" capture="user" hidden>
+                    <small>La fotografía se coloca automáticamente en el carnet.</small>
+                  </div>
+                </div>
+                <div class="camera-box" id="cameraBox">
+                  <video id="cameraVideo" autoplay playsinline muted></video>
+                  <canvas id="cameraCanvas" hidden></canvas>
+                  <div class="camera-actions">
+                    <button class="btn success" id="cameraCapture" type="button">Capturar foto</button>
+                    <button class="btn light" id="cameraClose" type="button">Cerrar cámara</button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="options-box">
+                <div class="sub-title">🎨 Color principal del carnet</div>
+                <div class="palette">
+                  <button class="color-dot blue active" data-color="#0a57a7" data-dark="#053a75" title="Azul"></button>
+                  <button class="color-dot gray" data-color="#7f8fa2" data-dark="#5d6c80" title="Gris"></button>
+                  <button class="color-dot green" data-color="#279847" data-dark="#166f32" title="Verde"></button>
+                  <button class="color-dot red" data-color="#d61e28" data-dark="#a7121a" title="Rojo"></button>
+                  <button class="color-dot yellow" data-color="#d9a40e" data-dark="#a97800" title="Amarillo"></button>
+                  <button class="color-dot orange" data-color="#ec7a1a" data-dark="#c85a00" title="Naranja"></button>
+                </div>
+              </div>
+            </section>
+
+            <section class="panel preview-panel">
+              <div class="panel-title"><span class="panel-icon">◇</span>Vista previa del carnet</div>
+
+              <div class="badge-pair">
+                <article class="badge forklift-theme" id="frontBadge">
+                  <div class="badge-hole"></div>
+                  <div class="forklift-top recreated-header">
+                    <div class="header-brand-row">
+                      <div class="sw-mark" aria-hidden="true">
+                        <img src="sw-cover-earth.png" class="sw-mark-image" alt="Sherwin-Williams Cover the Earth">
+                      </div>
+                      <div class="sw-wordmark">Sherwin-Williams</div>
+                    </div>
+                    <div class="header-wave-white"></div>
+                    <div class="header-wave-red"></div>
+                  </div>
+
+                  <div class="front-main-title" id="frontMainTitle">OPERADOR AUTORIZADO</div>
+                  <div class="front-type-strip" id="frontTypeStrip">MONTACARGAS</div>
+
+                  <div class="front-content">
+                    <div class="front-photo-card">
+                      <img id="badgePhoto" alt="Foto del titular">
+                      <span id="badgePhotoPlaceholder">FOTOGRAFÍA</span>
+                    </div>
+                    <div class="front-data-card">
+                      <div class="data-line label">NOMBRE:</div>
+                      <div class="data-line value" id="badgeName">JUAN PÉREZ LÓPEZ</div>
+                      <div class="separator"></div>
+                      <div class="data-line label" id="codigoLabel">NO. EMPLEADO:</div>
+                      <div class="data-line value" id="badgeCodigo">123-456</div>
+                      <div class="separator"></div>
+                      <div class="data-line label">ÁREA:</div>
+                      <div class="data-line value" id="badgeArea">CND</div>
+                      <div class="separator"></div>
+                      <div class="data-line label">VIGENCIA:</div>
+                      <div class="data-line value" id="badgeRange">Ene 2025 - Ene 2027</div>
+                    </div>
+                  </div>
+
+                  <div class="front-badges-row">
+                    <div class="front-mini-card">
+                      <span class="mini-chip" id="badgeStatusText">VIGENTE</span>
+                      <small id="activityText">Montacarguista</small>
+                    </div>
+                    <div class="front-mini-card">
+                      <span>TIPO SANGRE</span>
+                      <strong id="badgeBlood">O+</strong>
+                    </div>
+                  </div>
+
+                  <div class="badge-footer front-footer recreated-footer">
+                    <div class="footer-wave-red"></div>
+                    <div class="footer-inner">
+                      <div class="footer-slogan">SEGURIDAD HOY,<br>UN MEJOR MAÑANA</div>
+                      <div class="footer-helmet-icon" aria-hidden="true">
+                        <svg viewBox="0 0 64 48">
+                          <path d="M10 30c1-10 11-18 23-18 13 0 23 8 24 20" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round"/>
+                          <path d="M26 10c4-3 8-4 12-4" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round"/>
+                          <path d="M16 31h30" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round"/>
+                          <path d="M18 31c2 8 10 13 20 13" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round"/>
+                          <path d="M44 31c1 4 3 8 8 10" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round"/>
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+                </article>
+
+                <article class="badge forklift-theme" id="backBadge">
+                  <div class="badge-hole"></div>
+                  <div class="back-top recreated-header">
+                    <div class="header-brand-row">
+                      <div class="sw-mark" aria-hidden="true">
+                        <img src="sw-cover-earth.png" class="sw-mark-image" alt="Sherwin-Williams Cover the Earth">
+                      </div>
+                      <div class="sw-wordmark">Sherwin-Williams</div>
+                    </div>
+                    <div class="header-wave-white"></div>
+                    <div class="header-wave-red"></div>
+                  </div>
+
+                  <div class="back-title" id="backSectionTitle">TIPO(S) DE EQUIPO AUTORIZADO(S)</div>
+
+                  <div class="equipment-grid" id="equipmentGrid">
+                    <div class="equipment-card" data-equip="combustion">
+                      <div class="equipment-icon"><img class="equipment-photo" src="equip-combustion.svg" alt="Montacargas combustión"></div>
+                      <div class="equipment-name">MONTACARGAS<br>COMBUSTIÓN</div>
+                      <div class="equipment-mark">✓</div>
+                    </div>
+                    <div class="equipment-card" data-equip="electrico">
+                      <div class="equipment-icon"><img class="equipment-photo" src="equip-electrico.svg" alt="Montacargas eléctrico"></div>
+                      <div class="equipment-name">MONTACARGAS<br>ELÉCTRICO</div>
+                      <div class="equipment-mark">✓</div>
+                    </div>
+                    <div class="equipment-card" data-equip="ex">
+                      <div class="equipment-icon"><img class="equipment-photo" src="equip-ex.svg" alt="Montacargas EX"></div>
+                      <div class="equipment-name">MONTACARGAS EX</div>
+                      <div class="equipment-mark">✓</div>
+                    </div>
+                    <div class="equipment-card" data-equip="orderpicker">
+                      <div class="equipment-icon"><img class="equipment-photo" src="equip-orderpicker.svg" alt="Order picker"></div>
+                      <div class="equipment-name">ORDER PICKER</div>
+                      <div class="equipment-mark">✓</div>
+                    </div>
+                    <div class="equipment-card" data-equip="apilador">
+                      <div class="equipment-icon"><img class="equipment-photo" src="equip-apilador.svg" alt="Apilador"></div>
+                      <div class="equipment-name">APILADOR</div>
+                      <div class="equipment-mark">✓</div>
+                    </div>
+                    <div class="equipment-card" data-equip="handpallet">
+                      <div class="equipment-icon"><img class="equipment-photo" src="equip-handpallet.svg" alt="Hand pallet eléctrico"></div>
+                      <div class="equipment-name">HAND PALLET<br>ELÉCTRICO</div>
+                      <div class="equipment-mark">✓</div>
+                    </div>
+                  </div>
+
+                  <div class="general-authorization" id="generalAuthorization">
+                    <div class="ga-icon">✓</div>
+                    <div>
+                      <div class="ga-title" id="generalAuthType">AUTORIZACIÓN GENERAL</div>
+                      <div class="ga-subtitle" id="generalAuthText">Carnet interno válido para la actividad seleccionada.</div>
+                    </div>
+                  </div>
+                  <div class="general-brand-image" id="generalBrandImage">
+                    <img src="ppe-general.png" alt="Reglas y EPP para visitantes o personal autorizado">
+                  </div>
+
+                  <div class="back-note">
+                    <div class="shield">🛡</div>
+                    <div>
+                      Operador capacitado y evaluado.<br>
+                      Uso obligatorio de EPP.<br>
+                      Respetar procedimientos de seguridad.
+                    </div>
+                  </div>
+
+                  <div class="back-bottom-brand recreated-footer back-footer">
+                    <div class="footer-wave-red"></div>
+                    <div class="footer-inner footer-inner-back">
+                      <div class="footer-slogan">SEGURIDAD HOY,<br>UN MEJOR MAÑANA</div>
+                      <div class="footer-helmet-icon" aria-hidden="true">
+                        <svg viewBox="0 0 64 48">
+                          <path d="M10 30c1-10 11-18 23-18 13 0 23 8 24 20" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round"/>
+                          <path d="M26 10c4-3 8-4 12-4" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round"/>
+                          <path d="M16 31h30" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round"/>
+                          <path d="M18 31c2 8 10 13 20 13" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round"/>
+                          <path d="M44 31c1 4 3 8 8 10" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round"/>
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+                </article>
+              </div>
+
+              <div class="preview-actions">
+                <button class="btn primary" id="saveBtn" type="button">💾 Generar / Guardar carnet</button>
+                <button class="btn light" id="printBtn" type="button">🖨 Imprimir carnet</button>
+                <button class="btn danger" id="clearBtn" type="button">🗑 Limpiar</button>
+              </div>
+
+              <div class="print-note">La impresión genera únicamente el frente y reverso del carnet.</div>
+            </section>
+          </div>
+        </section>
+
+        <section id="page-history" class="page">
+          <div class="page-heading">
+            <div>
+              <h1>Historial de Carnets</h1>
+              <p>Consulta los carnets generados y utiliza el buscador superior para filtrarlos.</p>
+            </div>
+          </div>
+          <section class="panel history-panel"><div id="historyContent"></div></section>
+        </section>
+
+        <section id="page-reports" class="page">
+          <div class="page-heading report-heading">
+            <div>
+              <h1>Reportes</h1>
+              <p>Resumen de los carnets registrados en este navegador.</p>
+            </div>
+            <button class="btn secondary" id="downloadCsvBtn" type="button">↓ Descargar CSV</button>
+          </div>
+          <div class="metrics">
+            <div class="metric"><span>Carnets generados</span><strong id="metricTotal">0</strong></div>
+            <div class="metric"><span>Vigentes</span><strong id="metricValid">0</strong></div>
+            <div class="metric"><span>Vencidos</span><strong id="metricExpired">0</strong></div>
+            <div class="metric"><span>Empresas registradas</span><strong id="metricCompanies">0</strong></div>
+          </div>
+          <div class="reports-grid">
+            <section class="panel report-card">
+              <div class="panel-title"><span class="panel-icon">▥</span>Carnets por empresa</div>
+              <div id="companyReport" class="bars"></div>
+            </section>
+            <section class="panel report-card">
+              <div class="panel-title"><span class="panel-icon">▤</span>Carnets por área</div>
+              <div id="areaReport" class="bars"></div>
+            </section>
+          </div>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <div class="toast" id="toast"></div>
+  <script src="app.js"></script>
+</body>
+</html>

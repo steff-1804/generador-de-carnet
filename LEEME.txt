@@ -1,0 +1,53 @@
+GENERADOR DE CARNETS - VERSION V4
+
+Archivos:
+- index.html
+- styles.css
+- app.js
+- logo-condor-sherwin.png
+
+Mejoras incluidas:
+1. Diseño del carnet renovado con estilo más cercano a la referencia de montacarguista.
+2. Opción exclusiva para tipo de carnet = Montacarguista.
+3. Selección de equipos autorizados:
+   - Montacargas combustión
+   - Montacargas eléctrico
+   - Montacargas EX
+   - Order picker
+   - Apilador
+   - Hand pallet eléctrico
+4. En la parte posterior se muestra un visto únicamente en los equipos seleccionados.
+5. El historial guarda también los equipos seleccionados.
+
+Para publicar:
+- Reemplaza los archivos existentes por estos archivos.
+- Vuelve a desplegar en Netlify / GitHub / donde estés usando el proyecto.
+
+
+V5
+- Se incorporó imagen de encabezado personalizada.
+- Se incorporó imagen de pie de página personalizada.
+- Se agrandó el tamaño visual del carnet.
+- Se redujeron los tamaños de letra para mostrar mejor la información.
+- La impresión ahora coloca frente y reverso en una sola hoja.
+
+V6
+- Se reemplazaron las siglas por imágenes/ilustraciones de los equipos autorizados en el reverso del carnet.
+
+V7
+- Se recreó el encabezado y pie del carnet con HTML/CSS/SVG para permitir cambio de color sin usar una imagen fija.
+- Se redujo el tamaño del texto secundario bajo VIGENTE.
+
+V8
+- Se reemplazó la imagen pequeña del encabezado por la imagen grande oficial Cover the Earth.
+- En carnets que no son de montacargas se muestra el logo Cover the Earth al centro del reverso, entre el encabezado y el pie.
+
+V9
+- En carnets que no son de montacargas se reemplazó el logo central del reverso por la imagen de reglas/EPP proporcionada por el usuario.
+
+
+Ajustes adicionales:
+- Se cambió el título del carnet de montacargas a VEHÍCULOS INDUSTRIALES / MOTORIZADOS.
+- Se corrigió la nota del reverso para que no quede tapada por la franja azul.
+- Se ajustó la impresión para reducir un poco el tamaño del carnet.
+- Se incrustaron las imágenes locales antes de imprimir para que aparezcan también las imágenes de equipos.
